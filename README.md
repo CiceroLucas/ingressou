@@ -7,52 +7,111 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# 🎫 Ingressou
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Um sistema completo de gestão de eventos e bilheteria digital focado na melhor experiência do usuário, construído com alta performance, design limpo e interfaces premium corporativas.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tecnologias e Arquitetura
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+O **Ingressou** foi arquitetado separando claramente as responsabilidades de backend e frontend dentro do ecossistema moderno do Laravel, permitindo escalabilidade e robustez.
 
-## Learning Laravel
+### Backend Integrado (Monolito Moderno)
+- **Framework:** [Laravel 13](https://laravel.com/)
+- **Linguagem:** PHP 8.5
+- **Banco de Dados:** MySQL (via Eloquent ORM)
+- **Geração de Ingressos:** [Simple QrCode](https://www.simplesoftware.io/docs/simple-qrcode) para compilação instantânea e segura de chaves únicas por participante.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Frontend UI/UX Premium
+- **Estilização:** [Tailwind CSS](https://tailwindcss.com/)
+- **Templates:** Laravel Blade Components com estado modular.
+- **Design System:** Design minimalista, focado em alta legibilidade. Paleta construída no espectro '*Neutral*' (tons de chumbo, chumbo-escuro e off-whites) abstraindo totalmente cores brilhantes para entregar um aspecto totalmente profissional e de imersão corporativa.
+- **Validação na Portaria Frontend:** Scanner de QR Code nativo usando a biblioteca [html5-qrcode](https://github.com/mebjas/html5-qrcode), otimizada para captar leituras tanto por câmeras de celular quanto por webcams no check-in no formato tempo real.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## ⚙️ Principais Funcionalidades
 
-## Agentic Development
+1. **Vitrine e Calendário de Eventos:** Catálogo aberto para eventos em formato card de alta classe sem distrações visuais.
+2. **Sistema de Contas:** Perfis de usuário otimizados para rápida inscrição.
+3. **Emissão de Ingressos em PDF/Web:** Cada inscrição possui geração de página blindada de ingresso e print local contendo um Hash/QR Único.
+4. **Dashboard Administrativo:** Controle de dados, listagem de eventos e inscrições em tempo real.
+5. **Scanner de Portaria:** Validação física e aprovação de entrada via câmera/QR.
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
 
+## 🛠️ Como Instalar e Rodar o Projeto
+
+Siga as etapas abaixo para providenciar o ambiente de desenvolvimento local.
+
+### Pré-requisitos
+- **PHP** >= 8.2 (Recomendado 8.5 conforme stack)
+- **Composer** instalado globalmente
+- **Node.js** & **NPM**
+- **MySQL** ou MariaDB rodando localmente (ex: XAMPP, Laragon ou Docker).
+
+### Passo a Passo
+
+**1. Clone o repositório**
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/seu-usuario/ingressou.git
+cd ingressou
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+**2. Instale as dependências do PHP (Backend)**
+```bash
+composer install
+```
 
-## Contributing
+**3. Instale as dependências do Javascript/CSS (Frontend)**
+```bash
+npm install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**4. Configuração do Arquivo de Ambiente**
+Crie uma cópia do arquivo de configuração padrão:
+```bash
+cp .env.example .env
+```
+Abra o arquivo `.env` gerado e configure a conexão com seu banco de dados local:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=ingressou
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## Code of Conduct
+**5. Geração e Preparação Estrutural**
+Gere a chave da aplicação e crie o link simbólico para os arquivos físicos (como imagens e banners de eventos):
+```bash
+php artisan key:generate
+php artisan storage:link
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+**6. Banco de Dados e Migrations**
+Popule as tabelas da base com o comando de migrate, e aproveite as Seeds para possivelmente gerar o usuário Administrador padrão:
+```bash
+php artisan migrate --seed
+```
+*(Nota: Se houver uma seed de administrador, utilize o e-mail cadastrado por ela para fazer login e ver a visão de Scanner e Eventos).*
 
-## Security Vulnerabilities
+**7. Iniciando os Servidores**
+Será necessário ter dois terminais abertos. No primeiro, rode o compilador do Tailwind:
+```bash
+npm run dev
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+E no segundo terminal conectado a sua pasta, rode o serviço PHP:
+```bash
+php artisan serve
+```
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Acesso à Aplicação
+A aplicação subirá em seu localhost! Simplesmente acesse pelo navegador:
+
+**Web:** [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+Sinta-se à vontade para colaborar criando forks, ou abri issues em caso de melhorias!
