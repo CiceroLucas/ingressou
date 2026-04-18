@@ -29,7 +29,7 @@ O **Ingressou** foi arquitetado separando claramente as responsabilidades de bac
 
 ---
 
-## ⚙️ Principais Funcionalidades
+## Principais Funcionalidades
 
 1. **Vitrine e Calendário de Eventos:** Catálogo aberto para eventos em formato card de alta classe sem distrações visuais.
 2. **Sistema de Contas:** Perfis de usuário otimizados para rápida inscrição.
@@ -39,7 +39,7 @@ O **Ingressou** foi arquitetado separando claramente as responsabilidades de bac
 
 ---
 
-## 🛠️ Como Instalar e Rodar o Projeto
+## Como Instalar e Rodar o Projeto
 
 Siga as etapas abaixo para providenciar o ambiente de desenvolvimento local.
 
