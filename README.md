@@ -53,5 +53,5 @@ Follow the steps below to set up the local development environment.
 
 **1. Clone the repository**
 ```bash
-git clone https://github.com/seu-usuario/ingressou.git
+git clone https://github.com/CiceroLucas/ingressou.git
 cd ingressou
